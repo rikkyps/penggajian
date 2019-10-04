@@ -15,4 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/department', 'DepartmentController');
+Route::get('test-templates', function () {
+    return view('karyawan.index');
+});
+
+Route::resource('/departments', 'DepartmentController');
+
+//Datatables Routes
+Route::get('/api/datatable/departments', 'DepartmentController@dataTable')->name('api.datatable.departments');

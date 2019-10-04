@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Department;
+use Yajra\Datatables\Datatables;
 
 class DepartmentController extends Controller
 {
@@ -13,7 +15,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        return view('department.index');
+        return view('departments.index');
     }
 
     /**
@@ -23,7 +25,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('departmens.index');
     }
 
     /**
@@ -80,5 +82,21 @@ class DepartmentController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function dataTable()
+    {
+        $departments = Department::query();
+        return DataTables::of($departments)
+            ->addColumn('action', function($departments){
+                return view('layouts.admin.partials_.action', [
+                    'model' => $departments,
+                    'show_url' => route('departments.show', $departments->department_id),
+                    'edit_url' => route('departments.edit', $departments->department_id),
+                    'delete_url' => route('departments.destroy', $departments->department_id),
+                ]);
+            })
+            ->rawColumns(['action'])
+            ->make(true);
     }
 }
