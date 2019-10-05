@@ -1,11 +1,11 @@
 @extends('layouts.admin.app')
 
-@section('title', 'Aplikasi Penggajian | Tambah Data Department')
+@section('title', 'Aplikasi Penggajian | Edit Data Department')
 
 @section('content')
   <section class="content-header">
     <h1>
-      Department /<small>Tambah Data</small>
+      Department /<small>Edit Data</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -22,7 +22,7 @@
         <div class="box box-primary">
           <!-- /.box-header -->
           <!-- form start -->
-          {!! Form::open(['route' => 'departments.store', 'method' => "POST"]) !!}
+          {!! Form::model($data, ['route' => ['departments.update', $data->department_id], 'method' => "PUT"]) !!}
             @include('departments._form')
             <div class="box-footer">
               <button type="submit" class="btn btn-primary">Submit</button>

@@ -1,11 +1,11 @@
 @extends('layouts.admin.app')
 
-@section('title', 'Aplikasi Penggajian | Tambah Data Department')
+@section('title', 'Aplikasi Penggajian | Show Data Department')
 
 @section('content')
   <section class="content-header">
     <h1>
-      Department /<small>Tambah Data</small>
+      Department /<small>Show Data</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -22,13 +22,19 @@
         <div class="box box-primary">
           <!-- /.box-header -->
           <!-- form start -->
-          {!! Form::open(['route' => 'departments.store', 'method' => "POST"]) !!}
-            @include('departments._form')
+          <div class="box-body">
+            <div class="form-group">
+              <label>ID Department</label>
+              <input type="text" class="form-control" value="{{ $data->department_id }}" readonly>
+            </div>
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" class="form-control" value="{{ $data->name }}" readonly>
+            </div>
+            </div>
             <div class="box-footer">
-              <button type="submit" class="btn btn-primary">Submit</button>
               <a href="{{ route('departments.index') }}" class="btn btn-default">Back</a>
             </div>
-          {!! Form::close() !!}
         </div>
         <!-- /.box -->
       </div>

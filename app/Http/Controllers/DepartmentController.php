@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Department;
 use Yajra\Datatables\Datatables;
+use Alert;
 
 class DepartmentController extends Controller
 {
@@ -25,7 +26,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        return view('departmens.index');
+        return view('departments.create');
     }
 
     /**
@@ -36,7 +37,16 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $this->validate($request, [
+            'department_id' => 'required|max:8|min:8|unique:departments',
+            'name' => 'required|min:5'
+        ]);
+
+        $departments = $request->all();
+        Department::create($departments);
+        Alert::success('Berhasil', 'Data berhasil disimpan!');
+        return redirect()->route('departments.index');
     }
 
     /**
@@ -47,7 +57,8 @@ class DepartmentController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Department::findOrFail($id);
+        return view('departments.show', compact('data'));
     }
 
     /**
@@ -58,7 +69,8 @@ class DepartmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Department::findOrFail($id);
+        return view('departments.edit', compact('data'));
     }
 
     /**
@@ -70,7 +82,16 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = Department::findOrFail($id);
+        $this->validate($request, [
+            'department_id' => 'required|max:8|min:8',
+            'name' => 'required|min:5'
+        ]);
+        
+        $data = Department::findOrFail($id);
+        $data->update($request->all());
+        toast('Data berhasil diupdate','success','top-right');
+        return redirect()->route('departments.index');
     }
 
     /**
@@ -81,7 +102,10 @@ class DepartmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if (!Department::destroy($id)) return redirect()->back();
+        Alert::success('Berhasil', 'Data berhasil dihapus!');
+        return redirect()->route('departments.index');
+
     }
 
     public function dataTable()
