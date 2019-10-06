@@ -24,3 +24,4 @@ Route::resource('/positions', 'PositionController');
 
 //Datatables Routes
 Route::get('/api/datatable/departments', 'DepartmentController@dataTable')->name('api.datatable.departments');
+Route::get('/api/datatable/positions', 'PositionController@dataTable')->name('api.datatable.positions');
