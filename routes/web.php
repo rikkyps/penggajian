@@ -20,6 +20,7 @@ Route::get('test-templates', function () {
 });
 
 Route::resource('/departments', 'DepartmentController');
+Route::resource('/positions', 'PositionController');
 
 //Datatables Routes
 Route::get('/api/datatable/departments', 'DepartmentController@dataTable')->name('api.datatable.departments');
