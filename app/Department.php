@@ -12,4 +12,9 @@ class Department extends Model
 
     protected $primaryKey = 'department_id';
     public $incrementing = false;
+
+    public function Karyawan()
+    {
+        return $this->hasMany(Karyawan::class);
+    }
 }

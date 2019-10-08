@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title', 'Aplikasi Penggajian | Index Position')
+@section('titlebar', 'Aplikasi Penggajian | Index Position')
 
 @section('assets-top')
   <link rel="stylesheet" href="{{ asset('assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}} ">

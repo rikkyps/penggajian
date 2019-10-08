@@ -21,7 +21,9 @@ Route::get('test-templates', function () {
 
 Route::resource('/departments', 'DepartmentController');
 Route::resource('/positions', 'PositionController');
+Route::resource('/karyawans', 'KaryawanController');
 
 //Datatables Routes
 Route::get('/api/datatable/departments', 'DepartmentController@dataTable')->name('api.datatable.departments');
 Route::get('/api/datatable/positions', 'PositionController@dataTable')->name('api.datatable.positions');
+Route::get('api/datatable/karyawans', 'KaryawanController@dataTable')->name('api.datatable.karyawans');
