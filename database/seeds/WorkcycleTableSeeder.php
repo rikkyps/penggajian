@@ -11,6 +11,11 @@ class WorkcycleTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('workcycles')->insert(array(
+            array(
+                'tanggal' => '',
+                'keterangan' => '',
+            )
+        ));
     }
 }
