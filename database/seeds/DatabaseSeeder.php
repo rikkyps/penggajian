@@ -16,8 +16,9 @@ class DatabaseSeeder extends Seeder
             PositionsTableSeeder::class,
             KaryawansTableSeeder::class,
             StatusTableSeeder::class,
-            SettingTableSeeder::class,
+            SettingsTableSeeder::class,
             UsersTableSeeder::class,
+            WorkcycleTableSeeder::class,
         ]);
     }
 }

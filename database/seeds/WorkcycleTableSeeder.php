@@ -13,8 +13,8 @@ class WorkcycleTableSeeder extends Seeder
     {
         DB::table('workcycles')->insert(array(
             array(
-                'tanggal' => '',
-                'keterangan' => '',
+                'tanggal' => '2019-08-17',
+                'keterangan' => 'HUT Indonesia',
             )
         ));
     }

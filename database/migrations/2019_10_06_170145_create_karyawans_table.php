@@ -15,7 +15,7 @@ class CreateKaryawansTable extends Migration
     {
         Schema::create('karyawans', function (Blueprint $table) {
             //$table->bigIncrements('id');
-            $table->string('nik', 10)->primaryKey();
+            $table->string('nik', 10)->primary();
             $table->string('id_department', 8)->unsigned();
             $table->foreign('id_department')->references('department_id')->on('departments');
             $table->integer('position_id')->unsigned();

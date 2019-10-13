@@ -16,7 +16,7 @@ class SettingsTableSeeder extends Seeder
                 'company_name' => 'PT. Putra Sindang Grup',
                 'address' => 'Jalan Pasukan Sindangkasih No. 22',
                 'email' => 'putrasindanggrup@gmail.com',
-                'phone' => '0987890987',
+                'phone' => '082240376552',
             )
         ));
     }
