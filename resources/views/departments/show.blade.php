@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title', 'Aplikasi Penggajian | Show Data Department')
+@section('titlebar', 'Aplikasi Penggajian | Show Data Department')
 
 @section('content')
   <section class="content-header">

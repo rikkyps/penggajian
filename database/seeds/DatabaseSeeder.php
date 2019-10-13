@@ -15,6 +15,9 @@ class DatabaseSeeder extends Seeder
             DepartmentsTableSeeder::class,
             PositionsTableSeeder::class,
             KaryawansTableSeeder::class,
+            StatusTableSeeder::class,
+            SettingTableSeeder::class,
+            UsersTableSeeder::class,
         ]);
     }
 }

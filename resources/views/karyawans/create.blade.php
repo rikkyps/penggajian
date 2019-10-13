@@ -1,6 +1,11 @@
 @extends('layouts.admin.app')
 
-@section('title', 'Aplikasi Penggajian | Tambah Data Karyawan')
+@section('titlebar', 'Aplikasi Penggajian | Tambah Data Karyawan')
+
+@section('assets-top')
+<!-- bootstrap datepicker -->
+<link rel="stylesheet" href="{{ asset('assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
+@endsection
 
 @section('content')
   <section class="content-header">
@@ -34,4 +39,23 @@
       </div>
     </div>
   </div>
+@endsection
+
+@section('assets-bottom')
+<!-- bootstrap datepicker -->
+<script src="{{asset('assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+<script src="{{ asset('vendor/laravel-filemanager/js/lfm.js') }}"></script>
+<script>
+//Script Datepicker
+  $('#datepicker').datepicker({
+      autoclose: true
+  })
+
+  $('#datepicker2').datepicker({
+      autoclose: true
+  })
+
+  $('#lfm').filemanager('image');
+</script>
+    
 @endsection

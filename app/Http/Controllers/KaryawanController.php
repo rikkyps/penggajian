@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Karyawan;
 use App\Department;
 use App\Position;
+use App\Status;
 use Yajra\Datatables\Datatables;
+use Carbon\Carbon;
 use Alert;
 
 class KaryawanController extends Controller
@@ -39,7 +41,20 @@ class KaryawanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nik' => 'required|max:10|unique:karyawans',
+            'name' => 'required',
+            'born' => 'required',
+            'address' => 'required',
+            'since' => 'required',   
+        ]);
+        
+        $request['born'] = Carbon::parse($request->born)->format('Y-m-d');
+        $request['since'] = Carbon::parse($request->since)->format('Y-m-d');
+        
+        Karyawan::create($request->all());
+        Alert::success('Berhasil', 'Data berhasil disimpan!');
+        return redirect()->route('karyawans.index');
     }
 
     /**
@@ -50,7 +65,8 @@ class KaryawanController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Karyawan::findOrFail($id);
+        return view('karyawans.show', compact('data'));
     }
 
     /**
@@ -61,7 +77,8 @@ class KaryawanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Karyawan::findOrFail($id);
+        return view('karyawans.edit', compact('data'));
     }
 
     /**
@@ -73,7 +90,18 @@ class KaryawanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            //'nik' => 'required|max:10|unique:karyawans,name,'. $request->input('nik'),
+            'name' => 'required',
+            'born' => 'required',
+            'address' => 'required',
+            'since' => 'required',   
+        ]);
+
+        $data = Karyawan::findOrFail($id);
+        $data->update($request->all());
+        toast('Data berhasil diupdate','success','top-right');
+        return redirect()->route('karyawans.index');
     }
 
     /**
@@ -94,9 +122,9 @@ class KaryawanController extends Controller
             ->addColumn('action', function($karyawans){
                 return view('layouts.admin.partials_.action', [
                     'model' => $karyawans,
-                    'show_url' => route('positions.show', $karyawans->nik),
-                    'edit_url' => route('positions.edit', $karyawans->nik),
-                    'delete_url' => route('positions.destroy', $karyawans->nik),
+                    'show_url' => route('karyawans.show', $karyawans->nik),
+                    'edit_url' => route('karyawans.edit', $karyawans->nik),
+                    'delete_url' => route('karyawans.destroy', $karyawans->nik),
                 ]);
             })
             ->addColumn('department', function($karyawans){

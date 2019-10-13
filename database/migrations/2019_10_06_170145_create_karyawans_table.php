@@ -24,8 +24,9 @@ class CreateKaryawansTable extends Migration
             $table->date('born');
             $table->text('address');
             $table->date('since');
-            $table->enum('status', ['Lajang', 'Kawin', 'Bercerai']);
+            $table->string('status', 3);
             $table->enum('gender', ['L', 'P']);
+            $table->string('phone', 13)->nullable();
             $table->string('photo')->nullable();
             $table->timestamps();
         });

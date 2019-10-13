@@ -15,10 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('test-templates', function () {
-    return view('karyawan.index');
-});
-
+Route::get('/settings', 'SettingController@index')->name('settings.index');
+Route::post('/settings', 'SettingController@store')->name('settings.store');
 Route::resource('/departments', 'DepartmentController');
 Route::resource('/positions', 'PositionController');
 Route::resource('/karyawans', 'KaryawanController');
@@ -27,3 +25,6 @@ Route::resource('/karyawans', 'KaryawanController');
 Route::get('/api/datatable/departments', 'DepartmentController@dataTable')->name('api.datatable.departments');
 Route::get('/api/datatable/positions', 'PositionController@dataTable')->name('api.datatable.positions');
 Route::get('api/datatable/karyawans', 'KaryawanController@dataTable')->name('api.datatable.karyawans');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
