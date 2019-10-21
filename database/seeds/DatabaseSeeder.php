@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
             SettingsTableSeeder::class,
             UsersTableSeeder::class,
             WorkcycleTableSeeder::class,
+            PresencesTableSeeder::class,
+            PresenceStatesTableSeeder::class,
         ]);
     }
 }

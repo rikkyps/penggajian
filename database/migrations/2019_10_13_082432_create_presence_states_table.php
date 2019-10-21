@@ -14,7 +14,8 @@ class CreatePresenceStatesTable extends Migration
     public function up()
     {
         Schema::create('presence_states', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->string('kode_kehadiran')->primary();
+            $table->string('keterangan');
             $table->timestamps();
         });
     }

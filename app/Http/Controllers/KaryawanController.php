@@ -128,10 +128,9 @@ class KaryawanController extends Controller
                 ]);
             })
             ->addColumn('department', function($karyawans){
-                  $data = Karyawan::join('departments', 'departments.department_id','=','karyawans.id_department')->get();
-                  foreach ($data as $row){
-                    return $row->name;
-                  }
+                $search = Karyawan::find($karyawans->nik);
+                $data = Department::where('department_id', $search->id_department)->first();
+                return $data->name;
             })
             ->addColumn('jabatan', function($karyawans){
                 return $karyawans->position->name;

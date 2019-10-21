@@ -69,7 +69,7 @@
                 <label>Department dan Position</label>
                 <div class="row">
                   <div class="col-md-6">
-                    {!! Form::select('id_department',  App\Department::pluck('name', 'department_id'), null, ['class' => 'form-control', 'id' => $errors->has('id_department') ? 'inputError' : '']) !!}
+                    {!! Form::select('id_department',  App\Department::pluck('name', 'department_id')->all(), null, ['class' => 'form-control', 'id' => $errors->has('id_department') ? 'inputError' : '']) !!}
                     @if($errors->has('id_department'))
                     <span class="help-block">
                         <strong>{{ $errors->first('id_department') }}</strong>

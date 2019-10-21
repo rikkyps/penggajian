@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::get('/settings', 'SettingController@index')->name('settings.index');
 Route::post('/settings', 'SettingController@store')->name('settings.store');
+Route::resource('/presences', 'PresenceController');
 Route::resource('/workcycles', 'WorkcycleController');
 Route::resource('/departments', 'DepartmentController');
 Route::resource('/positions', 'PositionController');
@@ -27,6 +28,7 @@ Route::get('/api/datatable/departments', 'DepartmentController@dataTable')->name
 Route::get('/api/datatable/positions', 'PositionController@dataTable')->name('api.datatable.positions');
 Route::get('/api/datatable/karyawans', 'KaryawanController@dataTable')->name('api.datatable.karyawans');
 Route::get('/api/datatable/workscycles', 'WorkcycleController@dataTable')->name('api.datatable.workcycles');
+Route::get('/api/datatable/presences', 'PresenceController@dataTable')->name('api.datatable.presences');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

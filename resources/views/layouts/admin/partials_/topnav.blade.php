@@ -13,6 +13,7 @@
           <ul class="nav navbar-nav">
             <li class="{{ Request::segment(1) == 'karyawans' ? 'active' : ''}}"><a href="{{ route('karyawans.index') }}">Karyawan</a></li>
             <li class="{{ Request::segment(1) == 'settings' ? 'active' : ''}}"><a href="{{ route('settings.index') }}">Setting</a></li>
+            <li class="{{ Request::segment(1) == 'presences' ? 'active' : ''}}"><a href="{{ route('presences.index') }}">Kehadiran</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Master <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">

@@ -15,6 +15,10 @@ class CreatePresencesTable extends Migration
     {
         Schema::create('presences', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nik', 10);
+            $table->datetime('tanggal_masuk');
+            $table->datetime('tanggal_pulang');
+            $table->string('kode_kehadiran', 4);
             $table->timestamps();
         });
     }
